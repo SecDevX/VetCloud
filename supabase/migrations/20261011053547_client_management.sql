@@ -76,7 +76,7 @@ create index pets_guardian_id_idx on clients.pets (tenant_id, guardian_id) where
 
 -- Conservación clínica: una mascota no se elimina físicamente.
 create or replace function clients.block_physical_delete()
-returns trigger language plpgsql as $$
+returns trigger language plpgsql set search_path = '' as $$
 begin
   raise exception 'PHYSICAL_DELETE_FORBIDDEN: use deleted_at for logical deletion';
 end;

@@ -48,12 +48,12 @@ create index profiles_tenant_id_idx on identity.profiles (tenant_id);
 
 -- Claims que las políticas RLS pueden leer sin consultar tablas de dominio.
 create or replace function identity.jwt_tenant()
-returns uuid language sql stable as $$
+returns uuid language sql stable set search_path = '' as $$
   select nullif(auth.jwt() -> 'app_metadata' ->> 'tenant_id', '')::uuid
 $$;
 
 create or replace function identity.jwt_role()
-returns text language sql stable as $$
+returns text language sql stable set search_path = '' as $$
   select auth.jwt() -> 'app_metadata' ->> 'role'
 $$;
 
@@ -132,7 +132,7 @@ revoke all on audit.log from anon, authenticated;
 
 -- Utilidad reutilizable en tablas con updated_at.
 create or replace function identity.touch_updated_at()
-returns trigger language plpgsql as $$ begin new.updated_at = now(); return new; end; $$;
+returns trigger language plpgsql set search_path = '' as $$ begin new.updated_at = now(); return new; end; $$;
 create trigger tenants_touch_updated_at before update on identity.tenants for each row execute function identity.touch_updated_at();
 create trigger branches_touch_updated_at before update on identity.branches for each row execute function identity.touch_updated_at();
 create trigger profiles_touch_updated_at before update on identity.profiles for each row execute function identity.touch_updated_at();
