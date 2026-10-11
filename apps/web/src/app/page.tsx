@@ -1,8 +1,6 @@
-import { Button } from "@vetcloud/ui";
-
 const phases = [
   ["Fase 0", "Fundacional", "Seguridad, tenants, RLS y diseño base"],
-  ["Fase 1", "MVP", "Pacientes, agenda, consulta y caja"],
+  ["Fase 1A", "Pacientes", "Tutores y mascotas: base técnica lista"],
   ["Fase 2", "Engagement", "Portal, recordatorios, vacunas e inventario"],
   ["Fase 3", "Escala", "Reportes, exportaciones y observabilidad"],
 ];
@@ -24,12 +22,20 @@ export default function Home() {
           <p className="eyebrow">FASE 0 · EN PROGRESO</p>
           <h1>Una base segura para cuidar mejor.</h1>
           <p>VetCloud organizará la atención, la agenda y la historia clínica sin mezclar los datos de cada veterinaria.</p>
-          <div className="actions"><Button>Ver avance de la fase</Button><Button variant="secondary">Guía de conexión</Button></div>
+          <div className="actions"><a className="button primary" href="#clientes">Ver avance de la fase</a><a className="button secondary" href="#seguridad">Guía de conexión</a></div>
         </div>
         <section id="fases" aria-labelledby="fases-title">
-          <div className="section-heading"><div><p className="eyebrow">DESARROLLO INCREMENTAL</p><h2 id="fases-title">Ruta de implementación</h2></div><span>1 de 4 fases</span></div>
+          <div className="section-heading"><div><p className="eyebrow">DESARROLLO INCREMENTAL</p><h2 id="fases-title">Ruta de implementación</h2></div><span>Fase 1A en preparación</span></div>
           <div className="phase-grid">
-            {phases.map(([number, title, description], index) => <article className={`card ${index === 0 ? "current" : ""}`} key={number}><p>{number}</p><h3>{title}</h3><span>{description}</span></article>)}
+            {phases.map(([number, title, description], index) => <article className={`card ${index < 2 ? "current" : ""}`} key={number}><p>{number}</p><h3>{title}</h3><span>{description}</span></article>)}
+          </div>
+        </section>
+        <section className="clients-progress" id="clientes" aria-labelledby="clientes-title">
+          <div><p className="eyebrow">FASE 1A · LISTA PARA CONECTAR</p><h2 id="clientes-title">Tutores y mascotas</h2><p>La primera pieza del MVP ya tiene sus reglas de negocio, contratos y migración segura. Falta enlazar el proyecto Supabase para guardar datos reales.</p></div>
+          <div className="progress-grid">
+            <article><strong>Registro rápido</strong><span>Un tutor y su mascota se validan juntos, con un dato de contacto obligatorio.</span></article>
+            <article><strong>Sin duplicados</strong><span>Documento del tutor y microchip de la mascota se comprueban antes del registro.</span></article>
+            <article><strong>Datos aislados</strong><span>Las políticas RLS separan cada clínica y permiten baja lógica, no borrado físico.</span></article>
           </div>
         </section>
         <section className="security" id="seguridad" aria-labelledby="security-title">
