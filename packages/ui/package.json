@@ -1,0 +1,9 @@
+{
+  "name": "@vetcloud/ui",
+  "private": true,
+  "version": "0.1.0",
+  "exports": { ".": "./src/index.tsx" },
+  "peerDependencies": { "react": "^19.0.0" },
+  "scripts": { "typecheck": "tsc --noEmit", "test": "vitest run --passWithNoTests" },
+  "devDependencies": { "@types/react": "^19.1.12", "vitest": "^3.2.4" }
+}

@@ -1,0 +1,8 @@
+packages:
+  - apps/*
+  - packages/*
+
+# Next.js usa esbuild durante la compilación. Se permite únicamente este script
+# de dependencia, en lugar de ejecutar scripts arbitrarios del árbol npm.
+allowBuilds:
+  esbuild: true
