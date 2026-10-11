@@ -12,6 +12,7 @@ export default function Home() {
         <div className="brand"><span aria-hidden>✚</span> VetCloud</div>
         <nav aria-label="Navegación principal">
           <a className="active" href="#inicio">Inicio</a>
+          <a href="/demo/pacientes/nuevo">Pacientes</a>
           <a href="#fases">Hoja de ruta</a>
           <a href="#seguridad">Seguridad</a>
         </nav>

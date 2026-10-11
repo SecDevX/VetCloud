@@ -9,6 +9,9 @@
     "test": "vitest run --passWithNoTests"
   },
   "dependencies": {
+    "@supabase/ssr": "^0.12.7",
+    "@supabase/supabase-js": "^2.117.3",
+    "@vetcloud/client-management": "workspace:*",
     "@vetcloud/contracts": "workspace:*",
     "@vetcloud/shared-kernel": "workspace:*",
     "@vetcloud/ui": "workspace:*",
